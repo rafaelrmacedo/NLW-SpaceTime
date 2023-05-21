@@ -1,14 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const NextConfig = {
   images: {
-    domains: [
-      'avatars.githubusercontent.com',
-    ]
+    domains: ['avatars.githubusercontent.com']
   }
 }
 
-module.exports = {
-    experimental: {
-      forceSwcTransforms: true,
-    },
-  }
+module.exports = NextConfig

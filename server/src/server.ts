@@ -15,11 +15,11 @@ server.register(cors, {
 })
 
 server.register(jwt, {
-    secret: '3ódmqpmdpaoinmçksenf3i[nf0398jn13l~'
+    secret: 'spacetime'
 })
 
 server.listen({ //Como a promisse no JavaScript sigfica algo que possa demorar, então é necessário usar o then para que o servidor espere a promisse ser resolvida
     port: 3333,
 }).then(() => { //Anonymus function = função sem nome
-    console.log('Server is running on port 3000');  
+    console.log('Server is running on port 3333');  
 })
