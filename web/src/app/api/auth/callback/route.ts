@@ -3,7 +3,10 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url) // URLSearchParams object
+
   const code = searchParams.get('code') // GitHub OAuth code from GitHub redirect URL
+
+  const redirectTo = request.cookies.get('redirectTo')?.value // Redirect URL from cookie
 
   const registerResponse = await api.post('/register', {
     code,
@@ -11,7 +14,7 @@ export async function GET(request: NextRequest) {
 
   const { token } = registerResponse.data // User's token
 
-  const redirectURL = new URL('/', request.url) // Redirect to home page
+  const redirectURL = redirectTo ?? new URL('/', request.url) // Redirect to home page
 
   const cookieExpiresInSeconds = 60 * 60 * 24 * 30
 
