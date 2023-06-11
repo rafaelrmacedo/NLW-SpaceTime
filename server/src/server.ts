@@ -6,24 +6,33 @@ import multipart from '@fastify/multipart'
 import { memoriesRoutes } from './routes/memories';
 import { authRoutes } from './routes/auth';
 import { uploadRoutes } from './routes/upload'
+import { resolve } from 'node:path'
 
 const server = fastify()
 
 server.register(multipart)
-server.register(authRoutes)
-server.register(memoriesRoutes)
-server.register(uploadRoutes) 
+
+server.register(require('@fastify/static'), {
+  root: resolve(__dirname, '../uploads'),
+  prefix: '/uploads',
+})
 
 server.register(cors, {
-    origin: true,
+  origin: true,
 })
 
 server.register(jwt, {
-    secret: 'spacetime'
+  secret: 'spacetime',
 })
 
-server.listen({ //Como a promisse no JavaScript sigfica algo que possa demorar, então é necessário usar o then para que o servidor espere a promisse ser resolvida
+server.register(authRoutes)
+server.register(uploadRoutes)
+server.register(memoriesRoutes)
+
+server
+  .listen({
     port: 3333,
-}).then(() => { //Anonymus function = função sem nome
-    console.log('Server is running on port 3333');  
-})
+  })
+  .then(() => {
+    console.log('🚀 HTTP server running on port http://localhost:3333')
+  })

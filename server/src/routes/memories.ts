@@ -1,4 +1,4 @@
-import fastify, { FastifyInstance } from "fastify";
+import { FastifyInstance } from "fastify";
 import { z } from 'zod'
 import { prisma } from '../lib/prisma'
 
@@ -50,22 +50,24 @@ export async function memoriesRoutes(server: FastifyInstance) { // usando o fast
 
     server.post('/memories', async (request) => {
         const bodySchema = z.object({
-            content: z.string(),
-            coverUrl: z.string(),
-            isPublic: z.coerce.boolean().default(false),
-        }) // Validation Schema for the request body
-
-        const { content, isPublic, coverUrl } = bodySchema.parse(request.body)
-
+          content: z.string(),
+          coverUrl: z.string(),
+          isPublic: z.coerce.boolean().default(false),
+        })
+    
+        const { content, coverUrl, isPublic } = bodySchema.parse(request.body)
+    
         const memory = await prisma.memory.create({
-            data: {
-                content, 
-                isPublic,
-                coverUrl,
-                userId: request.user.sub,
-            }
-        }) // Create the memory
-    })
+          data: {
+            content,
+            coverUrl,
+            isPublic,
+            userId: request.user.sub,
+          },
+        })
+    
+        return memory
+      })
 
     server.put('/memories/:id', async (request, reply) => {
         const paramsSchema = z.object({

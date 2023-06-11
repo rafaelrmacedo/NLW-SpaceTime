@@ -1,5 +1,4 @@
 import Image from 'next/image'
-
 import nwlLogo from '../assets/nlw-spacetime-logo.svg'
 import Link from 'next/link'
 
