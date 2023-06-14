@@ -1,4 +1,4 @@
-# NLW-SpaceTime
+# NLW-SpaceTime 🚀
 
 This project was created in NLW Spacetime Edition, made by [Rocketseat](https://www.rocketseat.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=lead&utm_term=perpetuo&utm_content=institucional-lead-home-texto-lead-brandkws-none-none-institucional-none-none-br-google&gclid=Cj0KCQjwyLGjBhDKARIsAFRNgW-n9axJ7vjvmB5VdglkR1qPtBhhORgyY5FsUOhRMQjtYXZ0W3MMRyMaAj_IEALw_wcB)
 
@@ -25,14 +25,14 @@ The content of the `.env` file should be:
 ### Generating GitHub Client ID and Secret using OAuth:
 1. Access your GitHub Profile.
 2. Go to Developer Settings.
-3. Click on "OAuth Apps," then "New OAuth App."
+3. Click on "OAuth Apps", then "New OAuth App."
 4. Set the Home Page URL as `http://localhost:3000`.
 5. Set the Authorization callback URL as `http://localhost:3000/api/auth/callback`.
 
 After completing these steps, the client ID and secret will appear for use in the `.env` files.
 
 #### Note:
-The Name and description just type anything you want.
+The Name and description fields just type anything you want.
 
 ## Project Dependencies
 #### Obs: Dev dependencies are installed using the flag -D before dependency.
